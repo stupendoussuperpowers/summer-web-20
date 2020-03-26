@@ -8,4 +8,4 @@ The project is based on the following base course + electives structure. The bas
 
 The Base Course will include Vanilla JS, Node.Js and React.
 
-Jump to the [https://github.com/stupendoussuperpowers/summer-web-20/wiki]Wiki for further instructions
+Jump to the Wiki[https://github.com/stupendoussuperpowers/summer-web-20/wiki] for further instructions
