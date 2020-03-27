@@ -5,8 +5,7 @@ const app = express();
 const port = 3000;
 
 var items = [
-    //... Enter some test items here
-    'hello world'
+    //... Enter some test items here in json format
 ];
 
 //Serve a GET Request for url '/all' and '/:id'
@@ -18,7 +17,7 @@ app.get('/all', (req, res) => res.send(items));
 // Another way to handle the function is through unnamed functions as shown below
 app.get('/item/:id', function(req, res){
     //Implement searching for ID and send
-    res.send(`Searched for ${req.params["id"]}`);
+    
 });
 
 
@@ -27,13 +26,13 @@ app.get('/item/:id', function(req, res){
 //You can also define a separate function and call that later, as long as the function parameters match
 function addItem(req, res){
     //Implement adding item here
-    res.send("Added Item");
+    
 }
 
 app.post('/additem', addItem);
 
 function editItem(req, res){
-
+    //Implement editing an item here
 }
 
 app.put('/edititem/:id', editItem);
