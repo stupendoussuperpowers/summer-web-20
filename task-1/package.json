@@ -1,0 +1,22 @@
+{
+  "name": "task-1",
+  "version": "1.0.0",
+  "description": "IECSE Summer Web Project 2020",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stupendoussuperpowers/summer-web-20.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stupendoussuperpowers/summer-web-20/issues"
+  },
+  "homepage": "https://github.com/stupendoussuperpowers/summer-web-20#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
