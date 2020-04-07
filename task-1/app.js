@@ -27,7 +27,7 @@ app.get('/item/:id', function(req, res){
     //Implement searching for ID and send
     const item = items.find(c => c.id ===parseInt(req.params.id));
     if(!item)
-    res.status(404).send('<h2>Not Found!</h2>');
+    res.status(400).send({error:"not found"});
     res.send(item);
 });
 
@@ -50,7 +50,7 @@ app.post('/additem', (req, res) => {
 app.put('/edititem/:id', (req,res) =>{
     const item = items.find(c => c.id ===parseInt(req.params.id));
     if(!item)
-    res.status(404).send('<h2>Not Found!</h2>');
+    res.status(400).send({error:"Not Found!"});
     item.title = req.body.title;
     res.send(item);
 });
