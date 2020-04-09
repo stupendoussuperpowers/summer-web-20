@@ -6,36 +6,43 @@ const port = 3000;
 
 var items = [
     //... Enter some test items here in json format
-    
-     {
-        "Name" : "GirlsLikeYou", 
-        "Artist" : "Maroon5" 
-     }, 
-     {
-         "Name" : "Memories",
-         "Artist" : "Maroon5"
-     }, 
-     {
-        "Name" : "Marz",
-        "Artist" : "TYD"
-     }
+    {
+        "Name": "GirlsLikeYou",
+        "ID": 0
+    },
+
+    {
+        "Name": "Memories",
+        "ID": 1
+    },
+
+    {
+        "Name": "Marz",
+        "ID": 2
+    }
  
 ];
-items = JSON.parse(items);
-
+var size =3;
 app.get('/', (req, res)=>{
     res.send("Hello!");
 })
 //Serve a GET Request for url '/all' and '/:id'
 //The arrow function here controls what gets sent when the request is made
-app.get('/all', (req, res) => res.send(items.Name));
+app.get('/all', (req, res) => res.send(items));
 
 
 // 'id' here acts as a URL parameter
 // Another way to handle the function is through unnamed functions as shown below
 app.get('/item/:id', function(req, res){
     //Implement searching for ID and send
-    
+    var i = req.params.id;
+    var name;
+    for(var j=0;j<size;j++){
+        if(items[j]["ID"]==i){
+            name = items[j]["Name"]
+        }
+    }
+    res.send(name);
 });
 
 
@@ -44,17 +51,32 @@ app.get('/item/:id', function(req, res){
 //You can also define a separate function and call that later, as long as the function parameters match
 function addItem(req, res){
     //Implement adding item here
-    size++;
-    items[size]=req.params.item;
-    res.send("Successfully added" , req.params.item, "to list.")
-    
+    var item= req.params.item;
+    var name = "Sacrifice";
+    items.push({
+        "Name": name, 
+        "ID": item
+    });
+    res.send("Successfully added");
+    size = size+1;
 }
 
-app.get('/additem/:item', addItem);
+app.post('/additem/:item', addItem);
 
 function editItem(req, res){
     //Implement editing an item here
     var id = req.params.id;
+    var obj;
+    for(var i=0;i<size;i++){
+        if(items[i]["ID"]==id){
+            items.splice(i, 1);
+        }
+    }
+    items.push({
+        "Name": "Bella Ciao",
+        "ID": id
+    })
+    res.send("Edited!");
 }
 
 app.put('/edititem/:id', editItem);
