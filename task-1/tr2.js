@@ -1,5 +1,9 @@
-var app = require('express')();
+const express =require('express')
+const app = express();
+const bodyParser=require('body-parser');
 
+//Use const rather than var, you don't want your app to crash beacuse you tried to change it later
+app.use(bodyParser.json())
 app.get('/', function (req, res) {
   res.send('Hello World!');
 });
@@ -27,9 +31,15 @@ app.get('/resources/:id', function(req, res) {
 });
 
 
-app.post('/resources', function(req, res) {
-    var item = req.body;
-
+app.post('/resource', function(req, res) {
+    
+    //You cant add the object directly, first make the object item and then psuh it to the array.
+    
+    var item = {
+        id: req.body.id,
+        name :req.body.name,
+    };
+    console.log(req.body)
     if (!item.id) {
         return res.sendStatus(500);
     }
@@ -39,6 +49,7 @@ app.post('/resources', function(req, res) {
     res.send('/resources/' + item.id);
 });
 
+//Now that i've fixed your post request, try to look into the put request 
 
 app.put('/resources/:id', function(req, res) {
     var id = parseInt(req.params.id, 10);
@@ -56,10 +67,8 @@ app.put('/resources/:id', function(req, res) {
     }
 });
 
-var bodyParser = require('body-parser')
-app.use(bodyParser.json())
 
-var server = app.listen(3000, function () {
+var server = app.listen(1337, () => {
   var host = server.address().address;
   host = (host === '::' ? 'localhost' : host);
   var port = server.address().port;
