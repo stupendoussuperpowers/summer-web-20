@@ -17,7 +17,7 @@ app.get('/all', (req, res) => res.send(items));
 // Another way to handle the function is through unnamed functions as shown below
 app.get('/item/:id', function(req, res){
     //Implement searching for ID and send
-    
+
 });
 
 
@@ -26,7 +26,7 @@ app.get('/item/:id', function(req, res){
 //You can also define a separate function and call that later, as long as the function parameters match
 function addItem(req, res){
     //Implement adding item here
-    
+
 }
 
 app.post('/additem', addItem);
