@@ -1,48 +1,74 @@
-//Importing the package 'express', and then initialising it in the variable 'app' which let's you handle requests
 const express = require('express');
 const app = express();
+const port = 4000;
 
-const port = 3001;
-
-let items = [
+var items = [
     //... Enter some test items here in json format
-"Rhea","Manipal","18","IECSE","1","2","3"
+    {
+        "Name": "Alex",
+        "ID": 0
+    },
+
+    {
+        "Name": "Bob",
+        "ID": 1
+    },
+
+    {
+        "Name": "Charley",
+        "ID": 2
+    },
+    {
+        "Name": "David",
+        "ID": 3
+    }
+ 
 ];
+var len =4;
 
-app.get('/',(req,res)=>{
-    console.log("HEY! THIS IS ABOUT ME")
+app.get('/', (req, res)=>{
+    res.send("<h1><center>Welcome to the / page!</center></h1>");
 })
-//Serve a GET Request for url '/all' and '/:id'
-//The arrow function here controls what gets sent when the request is made
-app.get('/all', (req,res) => {
-   res.send(items);
-    
-});
-app.get('/:id', (req,res) => {
-    let id=req.params.id;
-    res.status(200).json(
-        {
-            message:"GET request for /:id successful",
-           id:id
-        }
-    )
-});
-// 'id' here acts as a URL parameter
-// Another way to handle the function is through unnamed functions as shown below
+
+app.get('/all', (req, res) => res.send(items));
+
 app.get('/item/:id', function(req, res){
-    //Implement searching for ID and send
-    let id=req.params.id;
-    res.status(200).json({
-        message:"item :id is here",
-        id:id,
-        item:items[id]
-    })
+   
+    let id = req.params.id;
+    let name;
+    for(var i=0;i<len;i++){
+        if(items[i]["ID"]==id){
+            name = items[i]["Name"]
+        }
+    }
+    res.send(name);
 });
-//Serve POST Requests
 
-//You can also define a separate function and call that later, as long as the function parameters match
-//app.post('/additem', addItem);
-//app.put('/edititem/:id', editItem);
+function addItem(req, res){
+    let name="Elsa";
+    let item= req.params.item;
+    items.push({
+        "Name": name, 
+        "ID": item
+    });
+    res.send("Successfully added new item to list");
+    len+=1;
+}
+app.post('/additem/:item', addItem);
 
-//This is what runs your backend server on localhost:portnumber the portnumber can be anything, the callback arrow function notifies you about the server being up
+function editItem(req, res){
+    let id = req.params.id;
+    for(var i=0;i<len;i++){
+        if(items[i]["ID"]==id){
+            items.splice(i, 1);
+        }
+    }
+    items.push({
+        "Name": "Farhan",
+        "ID": id
+    })
+    res.send("Edited the item in the list");
+}
+app.put('/edititem/:id', editItem);
+
 app.listen(port, () => console.log(`Listening at port ${port}`));
