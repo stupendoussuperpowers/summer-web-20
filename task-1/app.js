@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 const port = 4000;
+const bodyParser=require("body-parser");
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 
 var items = [
     //... Enter some test items here in json format
@@ -45,7 +48,7 @@ app.get('/item/:id', function(req, res){
 });
 
 function addItem(req, res){
-    let name="Elsa";
+    let name = req.body.name;
     let item= req.params.item;
     items.push({
         "Name": name, 
@@ -54,17 +57,20 @@ function addItem(req, res){
     res.send("Successfully added new item to list");
     len+=1;
 }
-app.post('/additem/:item', addItem);
+
+
 
 function editItem(req, res){
+    let name=req.body.name;
     let id = req.params.id;
+    
     for(var i=0;i<len;i++){
         if(items[i]["ID"]==id){
             items.splice(i, 1);
         }
     }
     items.push({
-        "Name": "Farhan",
+        "Name": name,
         "ID": id
     })
     res.send("Edited the item in the list");
