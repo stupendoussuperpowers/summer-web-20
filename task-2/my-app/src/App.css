@@ -1,0 +1,48 @@
+body{
+    margin: 0;
+    background-color:#282828;
+    color: white;
+}
+
+#header{
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    height: 30%;
+    width:100%;
+    padding: 10px;
+
+}
+#content{
+    position: relative;
+    top: 8%;
+    height: 100%;
+    width: 50%;
+}
+.thin{
+    font-weight: 100;
+}
+ #image{
+    height: 100%;
+    width: 25%;
+}
+img{
+    height: 100%;
+    width: 80%;
+} 
+button{
+    background-color: green;
+    border: 1px solid green;   
+}
+#playlist{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 33%;
+    height: 70%;
+    width: 70%;
+    left:25%;
+}
+.song{
+    border-bottom: solid gray 2px;    
+}
