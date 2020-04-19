@@ -1,9 +1,16 @@
-import React,{ Component } from 'react'
+import React from 'react'
 
-class Welcome extends Component{
-    render(){
-        return <h1>Class Component</h1>
-    }
+
+const Welcome = () => {
+    return(
+    <div>
+        <pre>
+            <h1>
+            #       Title                                       Timer(Icon)
+            </h1>
+        </pre>
+    </div>
+)
 }
 
 export default Welcome;
