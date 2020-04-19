@@ -1,0 +1,24 @@
+.card{
+    border: solid;
+    padding: 10px;
+    margin: 20px;
+    width: 90%;
+    text-align: left;
+
+}
+h1{
+    font-size: 30px;
+}
+h2{
+    font-size: 10px;
+}
+.img{
+    float: left;
+    margin-left: 40px;
+    margin-top: 40px;
+    
+}
+.cardclicked{
+    outline: greenyellow;
+    background-color: pink;
+}
