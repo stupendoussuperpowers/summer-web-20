@@ -4,7 +4,6 @@
     margin: 20px;
     width: 90%;
     text-align: left;
-
 }
 h1{
     font-size: 30px;
@@ -16,9 +15,14 @@ h2{
     float: left;
     margin-left: 40px;
     margin-top: 40px;
+    size:10px
     
 }
 .cardclicked{
-    outline: greenyellow;
     background-color: pink;
+    border: solid green;
+    padding: 10px;
+    margin: 20px;
+    width: 90%;
+    text-align: left;
 }
