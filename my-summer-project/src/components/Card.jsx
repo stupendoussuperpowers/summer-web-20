@@ -20,17 +20,20 @@ function Card(props){
 
 
 return <div className="card">
-
 <h1 className="song">{props.id}) {props.name}</h1>
 <h3 className="artist">Artist-{props.artist}</h3>
 
+<div className="icon">
 <button onClick ={playClicked}  className={(value===true) ? "play" :"pause"}>
-<img  src={Play} alt="Play"></img>
+<img   src={Play} alt="Play"></img>
 </button>
-
 <button onClick ={pauseClicked} className={(value===false) ? "play" :"pause"}>
-<img  src={Pause} alt="Pause"></img>
+<img   src={Pause} alt="Pause"></img>
 </button>
+</div>
+
+
+
 
 </div>
 }
