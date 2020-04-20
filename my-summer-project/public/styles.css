@@ -8,21 +8,28 @@
 h1{
     font-size: 30px;
 }
-h2{
-    font-size: 10px;
-}
-.img{
+
+
+
+.icon{
     float: left;
     margin-left: 40px;
     margin-top: 40px;
-    size:10px
+    size:10px;
     
 }
-.cardclicked{
+.play{
+    background-color: greenyellow;
+}
+.pause{
+    background-color: white;
+}
+
+/* .cardclicked{
     background-color: pink;
     border: solid green;
     padding: 10px;
     margin: 20px;
     width: 90%;
     text-align: left;
-}
+} */
