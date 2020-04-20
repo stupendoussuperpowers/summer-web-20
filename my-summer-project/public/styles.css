@@ -4,7 +4,7 @@ body{
     color: white;
 }
 .card{
-    border: solid;
+    
     padding: 10px;
     margin: 20px;
     width: 90%;
@@ -23,6 +23,8 @@ h1{
 .pause{
     background-color: white;
 }
+
+
 .spotify{
     float: left;
     margin-right: 30px;
@@ -35,7 +37,6 @@ h1{
 .album{
     font-weight: 100;
 }
-.icon{
-    position: relative;
-    left: 1000px;
-}
+/* .icon{
+    float:right
+} */

@@ -31,11 +31,9 @@ return <div className="card">
 <img   src={Pause} alt="Pause"></img>
 </button>
 </div>
-
-
-
-
+<hr></hr>
 </div>
+
 }
 
 export default Card;
