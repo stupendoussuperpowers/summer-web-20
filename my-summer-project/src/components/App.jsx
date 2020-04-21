@@ -1,25 +1,20 @@
-import React from "react";
+import React, { Component } from "react";
 import Card from "./Card";
 import songs from "../songs";
 import Head from "./Head"
+class App extends Component{
+render(){
+    return <div>
+        <Head />
+        {songs.map(
+            function(item,i){
+                return <Card {...item} key={i}/>
+         }
+        )
+        }
+        </div>
 
-
-
-function createCard(item)
-{
-    return <Card 
-    id={item.id}
-    name={item.name}
-    artist={item.artist}
-    />
 }
-
-function App(){
-return <div>
-<Head />
-{songs.map(createCard)}
-</div>
-
 
 }
 export default App;

@@ -19,6 +19,18 @@ const songs=[
         id:4,
         name:"Paris",
         artist:"The Chainsmokers"
-    }    
+    },
+    {
+        id:5,
+        name:"Paris",
+        artist:"The Chainsmokers"
+    },
+    {
+        id:6,
+        name:"Paris",
+        artist:"The Chainsmokers"
+    },    
 ]
+
 export default songs;
+
