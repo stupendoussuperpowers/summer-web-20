@@ -28,6 +28,9 @@ body{
 	position:relative;
 	top:1px;
 }
-.card:hover{
-	font-size: large;
+
+.cardselected{
+	font-size: 20px;
+	font-style: italic;
+	background-color: gray;
 }

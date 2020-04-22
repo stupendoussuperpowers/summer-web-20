@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Card from "./Card";
 import songs from "../songs";
 import Head from "./Head"
+
 class App extends Component{
 
     constructor() {
@@ -22,6 +23,7 @@ class App extends Component{
 render(){
     return <div>
         <Head />
+       
         <button className="myButton" onClick={this.toggleState}>{this.state.trueOrFalse ? "Play" : "Pause"}</button>
         {songs.map(
             function(item,i){
