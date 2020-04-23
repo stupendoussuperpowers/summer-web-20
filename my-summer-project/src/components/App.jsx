@@ -23,16 +23,15 @@ class App extends Component{
 render(){
     return <div>
         <Head />
-       
+       {console.log(this)}
         <button className="myButton" onClick={this.toggleState}>{this.state.trueOrFalse ? "Play" : "Pause"}</button>
         {songs.map(
-            function(item,i){
-                return <Card {...item} key={i} />
+            (item,i)=> <Card {...item} key={i} toggleState={this.toggleState}/>
                  
                 
-         }
+         
         )
-        }
+        }{console.log(this)}
         
         
 

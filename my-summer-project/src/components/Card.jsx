@@ -19,6 +19,7 @@ class Card extends Component{
         return <div onClick={this.currId} >
         
         <div onClick={this.props.toggleState}>
+        
         <div className={this.state.trueOrFalse ? "cardselected" : "card"}>
         
         <h3 className="song">{this.props.id}) {this.props.name}</h3>
