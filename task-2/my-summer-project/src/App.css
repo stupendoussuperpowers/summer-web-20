@@ -1,0 +1,135 @@
+body > #root > div {
+  height: 98vh;
+  
+}
+.App {
+  /* text-align: center; */
+  background-color: black;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.album{
+  -webkit-box-direction: normal;
+  text-align: center;
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 5px 5px 20px;
+    max-width: 100%;
+    padding-bottom: 20px;
+    border-bottom: 1px solid;
+
+}
+.album-cover {
+    width:30%;
+    min-width: 157px;
+    position: relative;
+    margin: 5px;
+    padding: 15px;
+    max-width: 320px;
+    display: inline;
+    
+    
+
+}
+
+
+.album-title{
+
+  line-height: 36px;
+  letter-spacing: -.005em;
+  font-weight: var(--glue-font-weight-black);
+  color: #fff;
+  text-transform: none;
+  margin: 5px;
+  padding: 15px;
+  font-weight: bold;
+  font-size:1.7em;
+  vertical-align: baseline;
+}
+.songlist{
+  padding:10px;
+  margin: 10px;
+}
+.song-nowplaying{
+  color: green;
+  display : flex;
+  height: 4.56em;
+  position: relative;
+}
+
+.song{
+  color:gainsboro;
+  display : flex;
+  height: 4.56em;
+  position: relative;
+  
+}
+
+.song-id{
+  letter-spacing: 0;
+  width: 3em;
+  margin-top:0.7em;
+}
+
+.song-title{
+  display: block;
+  height: 4.56em;
+  -webkit-box-flex: 1;
+  flex : 1 1 0;
+  width : 0;
+  overflow: hidden;
+  padding-right: 1px;
+  margin-right: -1px;
+  margin-top : .7em;
+  font-size:16px;
+  line-height: 22px;
+  letter-spacing: 0.15em;
+  text-overflow: hidden;
+}
+
+.song-dur{
+  text-align: right;
+  padding-right: 1em;
+  letter-spacing: 0;
+  width: 3.9 em;
+  margin-top: 0.7em;
+}
+
+.now-playing{
+   color:white;
+}
