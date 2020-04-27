@@ -1,41 +1,77 @@
-//Importing the package 'express', and then initialising it in the variable 'app' which let's you handle requests
 const express = require('express');
+const bodyParser = require('body-parser');
+
 const app = express();
 
-const port = 3000;
+// support parsing of application/json type post data
+app.use(bodyParser.json());
 
-var items = [
-    //... Enter some test items here in json format
+//support parsing of application/x-www-form-urlencoded post data
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
+let items = [
+    {
+        id: 1,
+        name: "Paawan",
+        age: 20
+    },
+    {
+        id: 2,
+        name: "Abc Xyz",
+        age: 18
+    },
+    {
+        id: 3,
+        name: "Npm Def",
+        age: 21
+    }
 ];
 
-//Serve a GET Request for url '/all' and '/:id'
-//The arrow function here controls what gets sent when the request is made
 app.get('/all', (req, res) => res.send(items));
 
 
-// 'id' here acts as a URL parameter
-// Another way to handle the function is through unnamed functions as shown below
-app.get('/item/:id', function(req, res){
-    //Implement searching for ID and send
-    
+app.get("/item/:id", function (req, res) {
+    const reqID = Number(req.params.id);
+    const filtered = items.filter((item) => item.id === reqID);
+    res.send(filtered);
 });
 
 
-//Serve POST Requests
+app.post('/additem', (req, res) => {
+    const data = req.body;
+    const {id, name, age} = data;
 
-//You can also define a separate function and call that later, as long as the function parameters match
-function addItem(req, res){
-    //Implement adding item here
-    
-}
+    if (!id || !name || !age) {
+        return res.send("Invalid data provided! Required fields are id, name and age.");
+    }
 
-app.post('/additem', addItem);
+    items.push(data);
+    res.send("Item added succesfully");
+});
 
-function editItem(req, res){
-    //Implement editing an item here
-}
 
-app.put('/edititem/:id', editItem);
 
-//This is what runs your backend server on localhost:portnumber the portnumber can be anything, the callback arrow function notifies you about the server being up
+app.put('/edititem/:id', (req, res) => {
+
+    const idToEdit = Number(req.params.id);
+    const data = req.body;
+    console.log(idToEdit, data);
+
+    items.forEach( (item) => {
+        if (item.id === idToEdit) {
+            if (data.name) {
+                item.name = data.name;
+            }
+            if (data.age) {
+                item.age = data.age;
+            }
+        }
+    });
+
+    res.send("Data updated.");
+});
+
+
+const port = process.env.port || 3000;
 app.listen(port, () => console.log(`Listening at port ${port}`));
