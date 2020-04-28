@@ -1,0 +1,91 @@
+body{
+  background-color: #262130;
+}
+.Header{
+  text-align: center;
+  background-color: green;
+  color: white;
+  width: 98%;
+  margin-left: 10px;
+  border-radius: 12px;
+  margin-bottom: 2px;
+}
+.songlist{
+  list-style: none;
+}
+.songs{
+  margin-top: 2px;
+  font-size: 20;
+  font-weight: bold;
+  margin-left: 60px;
+  color: white;
+  border-color: green;
+  border-style: solid;
+  width: 80%;
+  border-radius: 12px;
+  padding-left: 8px;
+  transition: background-color 0.3s, padding-left 0.2s, color 0.2s;
+}
+.songs:hover{
+  background-color: green;
+  padding-left: 32px;
+  color: white;
+}
+.songplay{
+  margin-top: 2px;
+  font-size: 20;
+  font-weight: bold;
+  margin-left: 60px;
+  color: white;
+  border-color: green;
+  border-style: solid;
+  width: 80%;
+  border-radius: 12px;
+  padding-left: 8px;
+  background-color: yellow;
+  transition: background-color 0.3s, padding-left 0.2s, color 0.2s;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+.songname{
+  font-size: 17px;
+  font-weight: bold;
+  line-height: 1px;
+}
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.table{
+  text-align: left;
+}
+.td{
+  width: 500px;
+  text-align: right;
+}
+.songname-data{
+  width: 300px;
+}
+.singer-data{
+  width: 300px;
+}
+.playing{
+  color: white;
+}
