@@ -1,0 +1,40 @@
+body{
+    background-color: 	#232b2b;
+    color: blanchedalmond;
+    padding: 50px;
+}
+.container{
+    display: flex;
+    align-items: centers;
+}
+.image{
+    border-radius: 0.5cm;
+}
+.text{
+    font-weight: bold;
+    font-size: 2cm;
+}
+.info{
+    margin: 1cm;
+    flex-direction: column;
+
+}
+.button{
+    background-color: #1DB954;
+    padding: 15px 32px;
+    text-align: center;
+    margin-left: 2.5cm;
+    margin-top: 0.5cm;
+    border-radius: 1cm;
+    font-size: medium;
+    font-weight: bold;
+    color:wheat;
+    outline: none;
+
+}
+/* .button:active{
+background: greenyellow;
+} */
+.key:hover{
+    background-color: teal;
+}
