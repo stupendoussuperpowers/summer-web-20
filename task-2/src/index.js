@@ -8,6 +8,3 @@ ReactDOM.render(
   <App />,
   root
 );
-
-
-//
