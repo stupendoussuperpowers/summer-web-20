@@ -64,15 +64,30 @@ router.patch('/:songid',(req,res)=>{
     });
 })
 
-router.get("/:genre",(req,res)=>{
-    Songs.findOne({genre:req.params.genre})
-    .then(songs=>{
-        res.json(songs)
-    }).catch(err=>{
-        res.json({
-            message:err
-        })
-    })
+//Here instead of having /:genre, have /filter(or anything that suits you)
+router.get(`/filter/:genre`,async (req,res)=>{
+    const filter = req.params.genre
+    console.log(filter)
+   
+   //Learn how to avoid the then,catch statements with ES6 async await statements 
+
+    var data = await Songs.findOne({genre:req.params.genre})
+    
+    if(!data){
+        console.log("No documents")
+        return res.send("Error fetching data")
+    }
+    console.log(data)
+    res.send(data);
+   // .then(songs=>{
+
+    //     res.json(songs)
+    // }).catch(err=>{
+    //     console.log(err)
+    //     res.json({
+    //         message:err
+    //     })
+    // })
 });
 router.get("/:artist",(req,res)=>{
     Songs.find({artist:req.params.artist})
