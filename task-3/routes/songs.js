@@ -65,9 +65,9 @@ router.patch('/:songid',(req,res)=>{
 })
 
 //Here instead of having /:genre, have /filter(or anything that suits you)
-router.get(`/filter/:genre`,async (req,res)=>{
-    const filter = req.params.genre
-    console.log(filter)
+router.get(`/genre/:genre`,async (req,res)=>{
+    const filtergenre = req.params.genre
+    console.log(filtergenre)
    
    //Learn how to avoid the then,catch statements with ES6 async await statements 
 
@@ -89,25 +89,43 @@ router.get(`/filter/:genre`,async (req,res)=>{
     //     })
     // })
 });
-router.get("/:artist",(req,res)=>{
-    Songs.find({artist:req.params.artist})
-    .then(songs=>{
-        res.json(songs)
-    }).catch(err=>{
-        res.json({
-            message:err
-        })
-    })
+router.get("/artist/:artist",async(req,res)=>{
+    const filterartist=req.params.artist
+    console.log(filterartist)
+    
+    var data=await Songs.findOne({artist:req.params.artist})
+    if(!data){
+        console.log("No documents")
+        return res.send("error fetching data")
+    }
+    console.log(data)
+    res.send(data);
+
+    // .then(songs=>{
+    //     res.json(songs)
+    // }).catch(err=>{
+    //     res.json({
+    //         message:err
+    //     })
+    // })
 });
-router.get("/:album",(req,res)=>{
-    Songs.find({album:req.params.album})
-    .then(songs=>{
-        res.json(songs)
-    }).catch(err=>{
-        res.json({
-            message:err
-        })
-    })
+router.get("/album/:album",(req,res)=>{
+    const filteralbum=req.params.album
+    console.log(filteralbum)
+    var data=await Songs.findOne({album:req.params.album})
+    if(!data){
+        console.log("No documents")
+        res.send("Unable to fetch data")
+    }
+    console.log(data)
+    res.send(data)
+    // .then(songs=>{
+    //     res.json(songs)
+    // }).catch(err=>{
+    //     res.json({
+    //         message:err
+    //     })
+    // })
 })
 module.exports=router;
 
