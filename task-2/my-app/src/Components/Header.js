@@ -1,12 +1,11 @@
-import React, {Component, useContext} from 'react'
-import globalContext from '../Components/GlobalContext'
-
+import React, { Component, useContext } from 'react';
+import GlobalContext from '../Components/GlobalContext';
 
 /*class Header extends Component{
     constructor(props){
         super(props);
         this.state={
-            context: useContext(globalContext),
+            context: useContext(GlobalContext),
             pokeNames: this.state.context.pokeNames,
             pokeDetails: this.state.context.pokeDetails
         };
@@ -36,24 +35,32 @@ import globalContext from '../Components/GlobalContext'
 }*/
 
 const Header = () => {
-    const context= useContext(globalContext);
-    console.log(context.fetched);
-    return(
-     context.fetched&&<div id="header">
-        <div >
-        <img className="headImage" src={context.pokeDetails[0].sprites.front_default} alt={context.pokeName[0]}/>
-        </div>
-        <div id="content">
-            <h1>Name:{context.pokeName[0]}</h1>
-            <h3>
-            Base experience: {context.pokeDetails[0].abilities.baseExperience} <br/>
-            Ability: {context.pokeDetails[0].abilities[0].ability}<br/>
-            Moves: {context.pokeDetails[0].move1},  {context.pokeDetails[0].move2},  {context.pokeDetails[0].move3}
-            </h3>
-        </div>
-        
-    </div>
-    )
-}
+	const context = useContext(GlobalContext);
+	console.log(context);
+	return context.fetched ? (
+		<div id='header'>
+			<div>
+				<img
+					className='headImage'
+					src={context.pokeDetails[0].sprites.front_default}
+					alt={context.pokeName[0]}
+				/>
+			</div>
+			<div id='content'>
+				<h1>Name:{context.pokeName[0]}</h1>
+				<h3>
+					Base experience: {context.pokeDetails[0].abilities.baseExperience} <br />
+					Ability: {context.pokeDetails[0].abilities[0].ability.name}
+					<br />
+					Moves: {context.pokeDetails[0].moves[1].move.name},{' '}
+					{context.pokeDetails[0].moves[2].move.name},{' '}
+					{context.pokeDetails[0].moves[3].move.name}
+				</h3>
+			</div>
+		</div>
+	) : (
+		<div>Please wait while we are loading poke </div>
+	);
+};
 
-export default Header 
+export default Header;

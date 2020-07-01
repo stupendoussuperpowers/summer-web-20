@@ -1,12 +1,10 @@
-import React, {createContext, useReducer, useEffect, useState} from 'react'
+import React, { createContext, useReducer, useEffect, useState } from 'react';
 
-
-  
-const GlobalState={
-  pokeName: [],
-  pokeDetails: [],
-  mounted: false
-}
+const GlobalState = {
+	pokeName: [],
+	pokeDetails: [],
+	mounted: false,
+};
 
 /*export function header(){
   const [state, setState] = useState([{
@@ -15,8 +13,8 @@ const GlobalState={
     mounted: false
   }])
 }*/
-const globalContext=createContext(GlobalState);
-export default globalContext
+const GlobalContext = createContext(GlobalState);
+export default GlobalContext;
 /*class PokeAPI extends Component {
     constructor(){
       super()
@@ -78,35 +76,51 @@ export default globalContext
       ) 
     }
 }*/
-const AppReducer= (state, action) => {
-      switch(action.type){
-        default: return(state)
-      }
-}
-export const GlobalProvider=({children})=>{
-      const [fetched, setFetched] = useState(false);
-      const [state, dispatch] = useReducer(AppReducer, {GlobalState, fetched});
-useEffect(()=>{
-  if(!fetched){
-  fetch('https://pokeapi.co/api/v2/pokemon?limit=7').then
-      (res =>res.json()).then(
-          response => {response.results.map((p, i) => 
-          {p.name=p.name.toString();
-           p.name= p.name.charAt(0).toUpperCase() + p.name.substr(1).toLowerCase();
-           GlobalState.pokeName.push(p.name);
-           fetch(p.url).then(data=>data.json()).then(result => {GlobalState.pokeDetails.push(result);
-          setFetched(true);
-          })
-          }
-        )}
-  )}
-})
-    console.log(fetched);
-      return(<globalContext.Provider value={{
-        pokeName: state.GlobalState.pokeName,
-        pokeDetails: state.GlobalState.pokeDetails,
-        fetched: state.fetched
-      }} >
-        {children}
-      </globalContext.Provider>)
-}
+const AppReducer = (state, action) => {
+	switch (action.type) {
+		case 'SET_FETCHED':
+			console.log(action);
+			return {
+				...state,
+				fetched: action.payload,
+			};
+		default:
+			return state;
+	}
+};
+export const GlobalProvider = ({ children }) => {
+	const [state, dispatch] = useReducer(AppReducer, { GlobalState, fetched: false });
+	useEffect(() => {
+		if (!GlobalState.fetched) {
+			fetch('https://pokeapi.co/api/v2/pokemon?limit=7')
+				.then((res) => res.json())
+				.then((response) => {
+					response.results.map((p, i) => {
+						p.name = p.name.toString();
+						p.name = p.name.charAt(0).toUpperCase() + p.name.substr(1).toLowerCase();
+						GlobalState.pokeName.push(p.name);
+						fetch(p.url)
+							.then((data) => data.json())
+							.then((result) => {
+								GlobalState.pokeDetails.push(result);
+								dispatch({
+									type: 'SET_FETCHED',
+									payload: true,
+								});
+							});
+					});
+				});
+		}
+	}, []);
+	console.log(state);
+	return (
+		<GlobalContext.Provider
+			value={{
+				pokeName: state.GlobalState.pokeName,
+				pokeDetails: state.GlobalState.pokeDetails,
+				fetched: state.fetched,
+			}}>
+			{children}
+		</GlobalContext.Provider>
+	);
+};
