@@ -18,23 +18,21 @@ body{
     top: 8%;
     height: 100%;
     width: 50%;
+    left: 15%;
 }
 .thin{
     font-weight: 100;
 }
- #image{
-    height: 100%;
-    width: 25%;
-}
-img{
-    height: 100%;
-    width: 80%;
+
+.headImage{
+    height: 120%;
+    width: 120%;
 } 
 button{
     background-color: green;
     border: 1px solid green;   
 }
-#playlist{
+#pokelist{
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -43,6 +41,32 @@ button{
     width: 70%;
     left:25%;
 }
-.song{
-    border-bottom: solid gray 2px;    
+.pokeIm{
+    position: relative; 
+    height: 80%;
+    width: 10%;
+     
+}
+.pokemon{
+    display: flex;
+    position: relative;
+    height: 10%;
+    width: 100%;
+    border-bottom: 2px solid yellow;  
+}
+#navBar{
+    background-color: yellow;
+    position: absolute;
+    border-radius: 5px;
+    top: 200px;
+    left: 380px;
+    height: 40px;
+    width: 70%; 
+    display: flex;
+    flex-direction: row;
+}
+.navText{
+    padding-left: 20px;
+    padding-right: 20px;
+    color: black;
 }
